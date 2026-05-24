@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap');
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  background: #0a0f1d;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  padding: 24px;
+}
+ 
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: 0.12em;
+  background: linear-gradient(90deg, #ffffff, #90a4ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+ 
+.subtitle {
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+}
+ 
+/* STATUS BAR */
+ 
+#status-bar {
+  font-size: 0.72rem;
+  color: #4ade80;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+ 
+#status-bar::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+}
+ 
+#status-bar.loading {
+  color: #f59e0b;
+}
+ 
+#status-bar.loading::before {
+  background: #f59e0b;
+  animation: blink 0.8s infinite;
+}
+ 
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+ 
+/* MAP */
+ 
+#map {
+  width: 100%;
+  height: 700px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  box-shadow:
+    0 0 0 1px #1e293b,
+    0 30px 80px rgba(0,0,0,0.7);
+}
+ 
+/* MARKERS */
+ 
+.dot {
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: radial-gradient(circle at 35% 35%, #60a5fa, #2563eb);
+  box-shadow: 0 0 10px rgba(37,99,235,0.8);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+ 
+.dot:hover {
+  transform: scale(1.45);
+  filter: brightness(1.35);
+}
+ 
+.dot-pulse {
+  background: radial-gradient(circle at 35% 35%, #f472b6, #db2777);
+  animation: pulse 2s infinite ease-in-out;
+}
+ 
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(219,39,119,0.7); }
+  50%       { box-shadow: 0 0 20px rgba(219,39,119,1), 0 0 40px rgba(219,39,119,0.4); }
+}
+ 
+/* POPUPS */
+ 
+.sports-popup .leaflet-popup-content-wrapper {
+  background: #111827;
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+ 
+.sports-popup .leaflet-popup-tip {
+  background: #111827;
+}
+ 
+.sports-popup .leaflet-popup-content {
+  margin: 0;
+}
+ 
+.popup-inner {
+  width: 340px;
+  max-height: 480px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #1f2937 transparent;
+}
+ 
+.popup-inner::-webkit-scrollbar       { width: 4px; }
+.popup-inner::-webkit-scrollbar-track { background: transparent; }
+.popup-inner::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 2px; }
+ 
+.popup-city {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #172554, #0f172a);
+  padding: 16px 18px 6px;
+}
+ 
+.popup-count {
+  padding: 0 18px 14px;
+  color: #64748b;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  background: linear-gradient(135deg, #172554, #0f172a);
+}
+ 
+.team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-bottom: 1px solid #1f2937;
+  transition: background 0.15s ease;
+}
+ 
+.team-row:last-child {
+  border-bottom: none;
+}
+ 
+.team-row:hover {
+  background: #172033;
+}
+ 
+.league-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.75rem;
+  min-width: 38px;
+  text-align: center;
+  padding: 3px 7px;
+  border-radius: 5px;
+  color: white;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+ 
+.team-logo {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+ 
+.team-name {
+  color: #dbe3f0;
+  font-size: 0.86rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+ 
+.record {
+  color: #94a3b8;
+}
+ 
+/* SEASON TAGS */
+ 
+.season-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+ 
+.season-tag.live {
+  background: rgba(74,222,128,0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,0.3);
+}
+ 
+.season-tag.last {
+  background: rgba(148,163,184,0.1);
+  color: #64748b;
+  border: 1px solid rgba(148,163,184,0.2);
+}
+ 
+/* LEGEND */
+ 
+.legend {
+  display: flex;
+  gap: 20px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+ 
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+ 
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+ 
+.legend-dot.single {
+  background: radial-gradient(circle at 35% 35%, #60a5fa, #2563eb);
+}
+ 
+.legend-dot.multi {
+  background: radial-gradient(circle at 35% 35%, #f472b6, #db2777);
+}
+ 
+/* LEAFLET OVERRIDES */
+ 
+.leaflet-control-zoom a {
+  background: #111827 !important;
+  color: #dbe3f0 !important;
+  border-color: #1f2937 !important;
+}
+ 
+.leaflet-control-zoom a:hover {
+  background: #1e293b !important;
+}
+ 
+.leaflet-control-attribution {
+  background: rgba(0,0,0,0.5) !important;
+  color: #64748b !important;
+}
+ 
+/* Cluster icon overrides */
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background-clip: padding-box;
+}
+ 
+.marker-cluster-small  div { background-color: rgba(37,99,235,0.8);  }
+.marker-cluster-medium div { background-color: rgba(109,40,217,0.8); }
+.marker-cluster-large  div { background-color: rgba(219,39,119,0.8); }
+ 
+.marker-cluster {
+  background-color: rgba(255,255,255,0.1);
+}
+ 
+.marker-cluster div {
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
